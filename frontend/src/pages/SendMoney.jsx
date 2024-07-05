@@ -13,7 +13,7 @@ const SendMoney = () => {
       navigate('/signup');
       return;
     }
-    axios.get("http://localhost:3000/api/v1/me", {
+    axios.get("http://localhost:7000/api/v1/me", {
       headers: {
         Authorization: `bearer ${token}`
       }
@@ -44,7 +44,7 @@ const SendMoney = () => {
 
   const handleTransfer = () => {
     setIsLoading(true);
-    axios.post("http://localhost:3000/api/v1/account/transfer", {
+    axios.post("http://localhost:7000/api/v1/account/transfer", {
       to: id,
       amount: amount
     }, {

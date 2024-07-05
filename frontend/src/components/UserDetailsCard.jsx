@@ -78,7 +78,7 @@ const UserDetailsCard = ({ toogleCardVisibility, setIsCardVisible, isCardVisible
                         type='submit'
                         className='bg-blue-500 text-white px-4 py-2 rounded'
                         onClick={() => {
-                            axios.put("http://localhost:3000/api/v1/user/", {
+                            axios.put("http://localhost:7000/api/v1/user/", {
                                 firstName: first,
                                 lastName: last,
                                 password: password

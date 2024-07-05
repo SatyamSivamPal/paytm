@@ -26,7 +26,7 @@ const Signin = () => {
               setPassword(e.target.value)
             }}/>
             <CustomButton label={"Sign in"} onClick={ async () => {
-              const res = await axios.post("http://localhost:3000/api/v1/user/signin", {
+              const res = await axios.post("http://localhost:7000/api/v1/user/signin", {
                 username: email,
                 password: password
               })

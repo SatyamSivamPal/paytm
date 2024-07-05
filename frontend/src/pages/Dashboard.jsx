@@ -19,7 +19,7 @@ const Dashboard = () => {
       return;
     }
 
-    axios.get("http://localhost:3000/api/v1/me", {
+    axios.get("http://localhost:7000/api/v1/me", {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -39,7 +39,7 @@ const Dashboard = () => {
         navigate('/signup');
       });
 
-      axios.get('http://localhost:3000/api/v1/account/balance', {
+      axios.get('http://localhost:7000/api/v1/account/balance', {
         headers: {
           Authorization: `Bearer ${token}`
         }

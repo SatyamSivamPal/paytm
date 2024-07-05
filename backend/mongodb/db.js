@@ -1,7 +1,20 @@
 const mongoose = require('mongoose');
-const url = "mongodb+srv://satyamsivampal4:satyamPAL123@cluster0.omtuesk.mongodb.net/"
+const dotenv = require('dotenv');
 
-mongoose.connect(url);
+dotenv.config();
+
+const url = process.env.DB_URL;
+
+mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log("Connected to MongoDB");
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -43,7 +56,7 @@ const accountSchema = new mongoose.Schema({
 const User = mongoose.model("User", UserSchema);
 const Account = mongoose.model("Account", accountSchema)
 
-module.exports = { 
+module.exports = {
     User,
     Account
 }

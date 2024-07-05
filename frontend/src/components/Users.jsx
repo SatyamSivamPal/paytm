@@ -9,7 +9,7 @@ const Users = () => {
     const token = localStorage.getItem("token")
 
     useEffect( () => {
-        axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter, {
+        axios.get("http://localhost:7000/api/v1/user/bulk?filter=" + filter, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

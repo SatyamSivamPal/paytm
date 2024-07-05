@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: 
+      context: "./frontend"
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    expose:
+      - "5173"
+    container_name: frontend
+    depends_on:
+      - backend
+    networks:
+      - paytmNetwork
+
+  backend:
+    build:
+      context: "./backend"
+      dockerfile: Dockerfile
+    ports:
+      - "7000:7000"
+    expose:
+      - "7000"
+    container_name: backend
+    environment:
+      - DB_URL=mongodb://mongoDB:27017/paytmDb
+    networks:
+      - paytmNetwork
+    depends_on:
+      - mongoDB
+
+  mongoDB:
+    image: mongo
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    volumes:
+      - paytmDb:/data/db
+    networks:
+      - paytmNetwork
+
+volumes:
+  paytmDb:
+
+networks:
+  paytmNetwork:
